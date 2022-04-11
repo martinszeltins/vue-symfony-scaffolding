@@ -1,0 +1,5 @@
+/* Base styles */
+@import './base/base.css';
+
+/* Utilities */
+@import './utilities/tailwind.css';

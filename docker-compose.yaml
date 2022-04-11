@@ -1,0 +1,81 @@
+version: '3.7'
+
+services:
+
+  # Node for client app
+  voting-platform-client-node:
+    container_name: voting-platform-client-node
+    build: docker/containers/client-node
+    restart: unless-stopped
+    stdin_open: true                # Needed for HMR
+    environment:
+      - CHOKIDAR_USEPOLLING=true    # Needed for HMR
+    ports:
+      - 14365:3000
+    volumes:
+      - ./app/client:/var/www
+    networks:
+      - app-network
+
+
+  # Nginx for server app
+  voting-platform-server-nginx:
+    container_name: voting-platform-server-nginx
+    build: docker/containers/server-nginx
+    restart: unless-stopped
+    ports:
+      - 13100:80
+    volumes:
+      - ./app/server:/var/www
+      - ./docker/containers/server-nginx/etc/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - voting-platform-server-php
+      - voting-platform-server-mysql
+    networks:
+      - app-network
+
+
+  # PHP for server app
+  voting-platform-server-php:
+    build: docker/containers/server-php
+    container_name: voting-platform-server-php
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: php
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./app/server:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - voting-platform-server-mysql
+
+
+  # MySQL for server app
+  voting-platform-server-mysql:
+    image: mysql:8.0
+    container_name: voting-platform-server-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "34472:3306"
+    volumes:
+      - dbdata:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: wGEDBcJzfSer2mLgh5Na5QKaT
+      MYSQL_DATABASE: voting-platform
+    networks:
+      - app-network
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  dbdata:
+    driver: local
