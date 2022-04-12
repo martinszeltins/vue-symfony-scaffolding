@@ -23,7 +23,7 @@ export default defineConfig(({ command }) => {
             host: true,
     
             hmr: {
-                port: 14365
+                clientPort: 14365
             }
         }
     }
