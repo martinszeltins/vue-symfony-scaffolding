@@ -66,7 +66,7 @@ services:
       - dbdata:/var/lib/mysql/
     environment:
       MYSQL_ROOT_PASSWORD: wGEDBcJzfSer2mLgh5Na5QKaT
-      MYSQL_DATABASE: voting-platform
+      MYSQL_DATABASE: voting_platform
     networks:
       - app-network
 
