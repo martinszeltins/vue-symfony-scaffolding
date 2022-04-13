@@ -1,3 +1,3 @@
 <template>
-    <div>layouts/App.vue</div>
+    <router-view></router-view>
 </template>
