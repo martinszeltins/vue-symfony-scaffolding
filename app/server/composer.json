@@ -14,6 +14,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
         "knplabs/doctrine-behaviors": "^2.6",
+        "lexik/jwt-authentication-bundle": "^2.15",
         "nelmio/cors-bundle": "^2.2",
         "nesbot/carbon": "^2.57",
         "phpdocumentor/reflection-docblock": "^5.3",
