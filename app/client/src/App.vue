@@ -4,11 +4,12 @@
 </template>
 
 <script setup>
+    import { useAuth } from '@/services/useAuth'
     import { useProgressBar } from '@/services/useProgressBar'
 
+    const { restoreSession } = useAuth()
     const { initProgressBar } = useProgressBar()
 
+    restoreSession()
     initProgressBar()
-
-    // const { restoreSession } = useAuth()
 </script>
