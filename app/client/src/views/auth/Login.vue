@@ -19,12 +19,13 @@
 
                         <label class="block text-sm">
                             <span class="text-gray-700">
-                                Email
+                                Username
                             </span>
 
                             <input
                                 class="block border-2 border-solid border-gray-200 rounded w-full p-2 mt-1 text-sm focus:border-gray-400 focus:outline-none"
-                                placeholder="Jane Doe"
+                                placeholder="Username"
+                                v-model="username"
                             />
                         </label>
 
@@ -37,17 +38,28 @@
                                 class="block border-2 border-solid border-gray-200 rounded w-full p-2 mt-1 text-sm focus:border-gray-400 focus:outline-none"
                                 placeholder="***************"
                                 type="password"
+                                v-model="password"
                             />
                         </label>
 
-                        <a
+                        <button
+                            @click="login(username, password)"
                             class="block w-full p-3 mt-4 font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-800"
                             href="#">
                             Log in
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+    import { useAuth } from '@/services/useAuth'
+
+    let username = $ref('')
+    let password = $ref('')
+
+    const { login } = useAuth()
+</script>
