@@ -18,7 +18,7 @@ app.use(routes)
    .use(VueProgressBar, {
        color: "#57b9dc",
        failedColor: "#874b4b",
-       thickness: "5px",
+       thickness: "8px",
        autoFinish: false,
    })
    .provide(
