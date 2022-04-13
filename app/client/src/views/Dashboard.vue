@@ -282,7 +282,7 @@
           </div>
         </header>
         <main class="h-full pb-16 overflow-y-auto">
-          <div class="container mx-auto grid">
+          <div class="container mx-auto grid max-w-3xl">
         
             <!-- Responsive cards -->
             <h4 class="mt-8 mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
