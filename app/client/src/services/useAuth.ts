@@ -1,3 +1,4 @@
+import routes from '@/routes.ts'
 import authApi from '@/api/authApi.ts'
 import { useAppStore } from '@/stores/appStore'
 
@@ -19,6 +20,7 @@ export function useAuth() {
 
         setUserInStore(user)
         setUserInLocalStorage(user)
+        goToRouteBeforeLogin()
     }
 
     const setUserInStore = user => {
@@ -29,5 +31,16 @@ export function useAuth() {
         localStorage['voting-platform_user'] = JSON.stringify(user)
     }
 
-    return { restoreSession, login }
+    const isUserLoggedIn = () => {
+        return appStore.user !== null
+    }
+
+    const goToRouteBeforeLogin = () => {
+        let route = localStorage['voting-platform_path_before_login']
+        route = (!route || route == '/login') ? '/' : route
+        
+        routes.push({ path: route })
+    }
+
+    return { restoreSession, login, isUserLoggedIn }
 }
