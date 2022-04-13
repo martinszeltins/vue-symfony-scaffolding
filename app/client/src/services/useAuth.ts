@@ -8,7 +8,9 @@ export function useAuth() {
         let user = localStorage['voting-platform_user']
 
         if (user) {
+            user = JSON.parse(user)
             appStore.user = user
+            axios.defaults.headers.common = { 'Authorization': `Bearer ${user.token}` }
         }
     }
 
