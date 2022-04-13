@@ -6,8 +6,10 @@ import routes from '@/routes.ts'
 import { createPinia } from 'pinia'
 import { useAxios } from '@/services/useAxios'
 import VueProgressBar from "@aacassandra/vue3-progressbar"
+import { useProgressBar } from '@/services/useProgressBar'
 
 const { configureAxios } = useAxios()
+const { progressBarConfig } = useProgressBar()
 
 configureAxios()
 
@@ -15,12 +17,7 @@ const app = createApp(App)
 
 app.use(routes)
    .use(createPinia())
-   .use(VueProgressBar, {
-       color: "#57b9dc",
-       failedColor: "#874b4b",
-       thickness: "8px",
-       autoFinish: false,
-   })
+   .use(VueProgressBar, progressBarConfig)
    .provide(
        'progressBar',
        app.config.globalProperties.$Progress
