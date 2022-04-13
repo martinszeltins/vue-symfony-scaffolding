@@ -13,7 +13,9 @@
     "dependencies": {
         "vue": "3.2.32",
         "pinia": "2.0.13",
-        "axios": "0.26.1"
+        "axios": "0.26.1",
+        "vue-router": "4.0.14",
+        "@aacassandra/vue3-progressbar": "1.0.3"
     },
     "devDependencies": {
         "@types/node": "17.0.23",
