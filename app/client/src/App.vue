@@ -7,11 +7,11 @@
     import router from '@/routes.ts'
 
     // const { restoreSession } = useAuth()
-    const progressBar = inject('progressBar')app/server/config/bundles.php
+    const progressBar = inject('progressBar')
 
     router.beforeEach((to, from, next) => {
         progressBar.start()
-        return next();
+        return next()
     })
 
     router.afterEach((to, from) => {
