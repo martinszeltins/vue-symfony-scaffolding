@@ -1,5 +1,5 @@
 <template>
-    <aside class="px-8 z-10 hidden w-72 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0 shadow">
+    <aside class="px-8 z-10 w-72 overflow-y-auto bg-white dark:bg-gray-800 flex-shrink-0 shadow">
         <div class="py-4 text-gray-400 dark:text-gray-400">
             <div class="mt-4">
                 <SidebarProfile />
