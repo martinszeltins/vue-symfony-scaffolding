@@ -1,7 +1,7 @@
 <template>
     <li class="relative py-4">
         <a
-            class="inline-flex items-center w-full font-medium transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 cursor-pointer"
+            class="inline-flex items-center w-full font-medium transition-colors duration-150 hover:text-gray-800 cursor-pointer"
             :class="{ 'text-black': active }">
 
             <i
