@@ -2,12 +2,15 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'url'
 import Components from 'unplugin-vue-components/vite'
+// import { PrimeVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(({ command }) => {
     return {
         plugins: [
             vue({ reactivityTransform: true }),
-            Components({}),
+            Components({ 
+                // resolvers: [ PrimeVueResolver ]
+             }),
         ],
     
         base: (command === 'build') ? './' : '/',
