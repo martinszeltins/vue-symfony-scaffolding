@@ -1,12 +1,12 @@
 import auth from '@/middleware/auth'
-import AppLayout from '@/views/layouts/App.vue'
+import AdminLayout from '@/views/layouts/Admin.vue'
 import AuthLayout from '@/views/layouts/Auth.vue'
 import { createWebHistory, createRouter } from 'vue-router'
 
 const routes = [
     {
         path: '/',
-        component: AppLayout,
+        component: AdminLayout,
 
         children: [
             {
