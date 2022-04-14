@@ -1,6 +1,5 @@
 import './utils/helpers'
 import App from './App.vue'
-import '@/assets/css/app.css'
 import { createApp } from 'vue'
 import routes from '@/routes.ts'
 import { createPinia } from 'pinia'
@@ -12,6 +11,7 @@ import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 import '@/assets/css/vendor/prime-vue/theme.css'
 import { useGlobalComponents } from '@/services/useGlobalComponents.ts'
+import '@/assets/css/app.css'
 
 const { configureAxios } = useAxios()
 const { progressBarConfig } = useProgressBar()
