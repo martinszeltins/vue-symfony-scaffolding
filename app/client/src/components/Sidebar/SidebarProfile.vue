@@ -11,8 +11,13 @@
         </div>
 
         <div>
-            <div class="font-semibold text-black">John Doe</div>
-            <div class="text-sm">Admin</div>
+            <div class="font-semibold text-black">
+                John Doe
+            </div>
+
+            <div class="text-sm">
+                Admin
+            </div>
         </div>
     </div>
 

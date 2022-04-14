@@ -4,7 +4,7 @@ export default function auth({ to, next, router }) {
     if (!user) {
         localStorage.setItem('voting-platform_path_before_login', to.path)
 
-        return next('/login')
+        return next('/auth/login')
     }
 
     return next()

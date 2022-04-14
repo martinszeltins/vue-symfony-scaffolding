@@ -9,6 +9,6 @@
     const { isUserLoggedIn  } = useAuth()
 
     if (isUserLoggedIn()) {
-        routes.push({ name: "dashboard" })
+        routes.push({ name: 'admin-dashboard' })
     }
 </script>

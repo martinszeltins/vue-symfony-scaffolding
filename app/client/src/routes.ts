@@ -1,18 +1,36 @@
 import auth from '@/middleware/auth'
-import AdminLayout from '@/views/layouts/Admin.vue'
 import AuthLayout from '@/views/layouts/Auth.vue'
+import AdminLayout from '@/views/layouts/Admin.vue'
 import { createWebHistory, createRouter } from 'vue-router'
 
 const routes = [
     {
         path: '/',
+
+        redirect: {
+            name: 'admin-dashboard'
+        },
+
+        meta: {
+            middleware: [ auth ],
+        },
+    },
+
+    {
+        path: '/admin',
         component: AdminLayout,
 
         children: [
             {
-                path: '',
-                name: 'dashboard',
-                component: () => import('@/views/Dashboard.vue'),
+                path: 'dashboard',
+                name: 'admin-dashboard',
+                component: () => import('@/views/admin/Dashboard.vue'),
+            },
+
+            {
+                path: 'sessions',
+                name: 'admin-sessions',
+                component: () => import('@/views/admin/Sessions.vue'),
             },
         ],
 
@@ -22,12 +40,12 @@ const routes = [
     },
 
     {
-        path: '/login',
+        path: '/auth',
         component: AuthLayout,
 
         children: [
             {
-                path: '',
+                path: 'login',
                 name: 'login',
                 component: () => import('@/views/auth/Login.vue'),
             }

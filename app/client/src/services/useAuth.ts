@@ -37,7 +37,7 @@ export function useAuth() {
 
     const goToRouteBeforeLogin = () => {
         let route = localStorage['voting-platform_path_before_login']
-        route = (!route || route == '/login') ? '/' : route
+        route = (!route || route == '/auth/login') ? '/' : route
         
         routes.push({ path: route })
     }
