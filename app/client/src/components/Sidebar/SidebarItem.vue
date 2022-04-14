@@ -1,18 +1,21 @@
 <template>
     <li class="relative py-4">
-        <a
-            class="inline-flex items-center w-full font-medium transition-colors duration-150 hover:text-gray-800 cursor-pointer"
-            :class="{ 'text-black': active }">
+        <router-link
+            :to="{ name: route }"
+            v-slot="{ isActive }"
+            class="inline-flex items-center w-full font-medium transition-colors duration-150 hover:text-gray-800 cursor-pointer">
 
-            <i
-                class="pi text-xl"
-                :class="[ `pi-${icon}` ]">
-            </i>
-
-            <span class="ml-4">
-                {{ text }}
-            </span>
-        </a>
+            <div :class="{ 'text-black': isActive }">
+                <i
+                    class="pi text-xl"
+                    :class="[ `pi-${icon}` ]">
+                </i>
+    
+                <span class="ml-4">
+                    {{ text }}
+                </span>
+            </div>
+        </router-link>
     </li> 
 </template>
 
@@ -20,14 +23,12 @@
     interface Props {
         text: string,
         icon?: string,
-        link?: string,
-        active: boolean,
+        route?: string,
     }
 
     const {
         text,
         icon,
-        link,
-        active,
+        route,
     } = defineProps<Props>()
 </script>

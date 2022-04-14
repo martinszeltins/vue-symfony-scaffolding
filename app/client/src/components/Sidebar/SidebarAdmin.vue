@@ -6,10 +6,10 @@
             </div>
 
             <ul class="mt-4">
-                <SidebarItem text="Dashboard" icon="home" link="/" :active="true" />
-                <SidebarItem text="Sessions" icon="book" link="/" :active="false" />
-                <SidebarItem text="Users" icon="users" link="/" :active="false" />
-                <SidebarItem text="Groups" icon="user-plus" link="/" :active="false" />
+                <SidebarItem text="Dashboard" icon="home" route="admin-dashboard" />
+                <SidebarItem text="Sessions" icon="book" route="admin-sessions" />
+                <SidebarItem text="Users" icon="users" route="admin-sessions" />
+                <SidebarItem text="Groups" icon="user-plus" route="admin-sessions" />
             </ul>
         </div>
     </aside>
