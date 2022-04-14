@@ -1,5 +1,5 @@
 <template>
-    <div class="flex gap-4 items-center">
+    <div class="flex gap-4 items-center p-4 rounded-md cursor-pointer hover:bg-gray-100">
         <div>
             <img
                 class="w-14"
