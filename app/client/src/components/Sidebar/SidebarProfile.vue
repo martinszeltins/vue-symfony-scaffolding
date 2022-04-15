@@ -12,7 +12,7 @@
 
         <div>
             <div class="font-semibold text-black">
-              {{ appStore.user.fullName }}
+                {{ appStore.user.fullName }}
             </div>
 
             <div class="text-sm">
