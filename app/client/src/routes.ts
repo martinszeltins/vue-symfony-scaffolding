@@ -46,7 +46,7 @@ const routes = [
         children: [
             {
                 path: 'login',
-                name: 'login',
+                name: 'auth-login',
                 component: () => import('@/views/auth/Login.vue'),
             }
         ],

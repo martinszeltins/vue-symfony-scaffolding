@@ -1,4 +1,5 @@
 import axios from 'axios'
+import routes from '@/routes'
 import { useToast } from '@/services/useToast'
 
 export function useAxiosInterceptors() {
@@ -29,7 +30,8 @@ export function useAxiosInterceptors() {
                      * otherwise we'll get an infinite loop when trying to log in.
                      */
                     if (! error.response?.config?.url?.includes('/login_check')) {
-                        showErrorToast('It looks like you do not have a valid access token.')
+                        showErrorToast('Session has expired. Please log in.')
+                        routes.push({ name: 'auth-login' })
                     }
 
                     return Promise.reject(error)
