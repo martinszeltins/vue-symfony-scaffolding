@@ -23,7 +23,9 @@
                             </div>
 
                             <AppInput
+                                @keydown="isInvalidCredentials = false"
                                 @keydown.enter="login(username, password)"
+                                :class="{ 'p-invalid': isInvalidCredentials }"
                                 v-focus
                                 type="text"
                                 v-model="username"
@@ -36,8 +38,10 @@
                             </div>
 
                             <AppPassword
+                                @keydown="isInvalidCredentials = false"
                                 @keydown.enter="login(username, password)"
                                 class="p-password-block"
+                                :class="{ 'p-invalid': isInvalidCredentials }"
                                 v-model="password"
                                 :feedback="false"
                             />
@@ -64,5 +68,5 @@
     let username = $ref('')
     let password = $ref('')
 
-    const { login, isLoading } = useAuth()
+    const { login, isLoading, isInvalidCredentials } = useAuth()
 </script>

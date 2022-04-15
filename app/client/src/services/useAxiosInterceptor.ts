@@ -21,10 +21,16 @@ export function useAxiosInterceptors() {
 
             (error) => {
                 /**
-                 * 401 - Not logged in | Unauthorized
+                 * 401 - Not logged in | Unauthorized | Session Expired
                  */
                 if (error.response?.status == 401) {
-                    showErrorToast('It looks like you do not have a valid access token.')
+                    /**
+                     * Redirect to login unless 401 is the result of login action
+                     * otherwise we'll get an infinite loop when trying to log in.
+                     */
+                    if (! error.response?.config?.url?.includes('/login_check')) {
+                        showErrorToast('It looks like you do not have a valid access token.')
+                    }
 
                     return Promise.reject(error)
                 }

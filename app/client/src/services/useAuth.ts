@@ -1,11 +1,13 @@
 import routes from '@/routes'
 import authApi from '@/api/authApi'
 import { useAppStore } from '@/stores/appStore'
+import { useToast } from '@/services/useToast'
 
 export function useAuth() {
     const appStore = useAppStore()
 
     let isLoading = $ref(false)
+    let isInvalidCredentials = $ref(false)
 
     const restoreSession = () => {
         let user = localStorage['voting-platform_user']
@@ -17,8 +19,11 @@ export function useAuth() {
         }
     }
 
-    const login = async (username, password) => {        
+    const login = async (username, password) => {
+        const { showErrorToast } = useToast()
+
         isLoading = true
+        isInvalidCredentials = false
 
         try {
             const user = await authApi.login(username, password)
@@ -29,6 +34,9 @@ export function useAuth() {
             setUserInLocalStorage(user)
             goToRouteBeforeLogin()
         } catch (error) {
+            isInvalidCredentials = true
+            showErrorToast('Incorrect username or password. Please try again!')
+
             isLoading = false
         }
     }
@@ -52,5 +60,11 @@ export function useAuth() {
         routes.push({ path: route })
     }
 
-    return $$({ restoreSession, login, isUserLoggedIn, isLoading })
+    return $$({
+        restoreSession,
+        login,
+        isUserLoggedIn,
+        isLoading,
+        isInvalidCredentials
+    })
 }
