@@ -7,20 +7,23 @@ import PrimeVue from 'primevue/config'
 import { useAxios } from '@/services/useAxios'
 import VueProgressBar from "@aacassandra/vue3-progressbar"
 import { useProgressBar } from '@/services/useProgressBar'
+import '@/assets/css/app.css'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 import '@/assets/css/vendor/prime-vue/theme.css'
 import { useGlobalComponents } from '@/services/useGlobalComponents.ts'
-import '@/assets/css/app.css'
+import { useCustomDirectives } from '@/services/useCustomDirectives.ts'
 
 const { configureAxios } = useAxios()
 const { progressBarConfig } = useProgressBar()
 const { registerGlobalComponents } = useGlobalComponents()
+const { registerCustomDirectives } = useCustomDirectives()
 
 const app = createApp(App)
 
 configureAxios()
 registerGlobalComponents(app)
+registerCustomDirectives(app)
 
 app.use(routes)
    .use(createPinia())

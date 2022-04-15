@@ -4,6 +4,7 @@ import { useAppStore } from '@/stores/appStore'
 
 export function useAuth() {
     const appStore = useAppStore()
+    let isLoading = $ref(false)
 
     const restoreSession = () => {
         let user = localStorage['voting-platform_user']
@@ -16,11 +17,19 @@ export function useAuth() {
     }
 
     const login = async (username, password) => {
-        const user = await authApi.login(username, password)
+        isLoading = true
 
-        setUserInStore(user)
-        setUserInLocalStorage(user)
-        goToRouteBeforeLogin()
+        try {
+            const user = await authApi.login(username, password)
+
+            isLoading = false
+            
+            setUserInStore(user)
+            setUserInLocalStorage(user)
+            goToRouteBeforeLogin()
+        } catch (error) {
+            isLoading = false
+        }
     }
 
     const setUserInStore = user => {
@@ -42,5 +51,5 @@ export function useAuth() {
         routes.push({ path: route })
     }
 
-    return { restoreSession, login, isUserLoggedIn }
+    return $$({ restoreSession, login, isUserLoggedIn, isLoading })
 }

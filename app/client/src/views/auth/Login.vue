@@ -17,37 +17,38 @@
                             Login
                         </h1>
 
-                        <label class="block text-sm">
-                            <span class="text-gray-700">
+                        <div class="flex flex-col text-sm space-y-2 mb-3">
+                            <div class="text-gray-700 font-semibold">
                                 Username
-                            </span>
+                            </div>
 
-                            <input
-                                class="block border-2 border-solid border-gray-200 rounded w-full p-2 mt-1 text-sm focus:border-gray-400 focus:outline-none"
-                                placeholder="Username"
+                            <AppInput
+                                v-focus
+                                type="text"
                                 v-model="username"
                             />
-                        </label>
+                        </div>
 
-                        <label class="block mt-4 text-sm">
-                            <span class="text-gray-700">
+                        <div class="flex flex-col text-sm space-y-2">
+                            <div class="text-gray-700 font-semibold">
                                 Password
-                            </span>
+                            </div>
 
-                            <input
-                                class="block border-2 border-solid border-gray-200 rounded w-full p-2 mt-1 text-sm focus:border-gray-400 focus:outline-none"
-                                placeholder="***************"
-                                type="password"
+                            <AppPassword
+                                class="p-password-block"
                                 v-model="password"
+                                :feedback="false"
                             />
-                        </label>
+                        </div>
 
-                        <button
-                            @click="login(username, password)"
-                            class="block w-full p-3 mt-4 font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-800"
-                            href="#">
-                            Log in
-                        </button>
+                        <div class="flex flex-col mt-4">
+                            <AppButton
+                                @click="login(username, password)"
+                                class="p-button-compact"
+                                label="Log in"
+                                :loading="isLoading"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,5 +62,5 @@
     let username = $ref('')
     let password = $ref('')
 
-    const { login } = useAuth()
+    const { login, isLoading } = useAuth()
 </script>

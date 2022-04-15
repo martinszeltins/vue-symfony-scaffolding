@@ -4,6 +4,8 @@ module.exports = {
         "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
 
+    important: true,
+
     theme: {
         extend: {
             boxShadow: {
