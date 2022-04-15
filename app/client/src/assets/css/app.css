@@ -3,3 +3,6 @@
 
 /* Utilities */
 @import './utilities/tailwind.css';
+
+/* Components */
+@import './components/toastify.css';

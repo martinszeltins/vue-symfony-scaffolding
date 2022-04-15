@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useToast } from 'primevue/usetoast'
+import { useToast } from '@/services/useToast'
 
 export function useAxiosInterceptors() {
     const addAxiosInterceptors = () => {
@@ -12,6 +12,8 @@ export function useAxiosInterceptors() {
     }
 
     const addResponseInterceptors = () => {
+        const { showErrorToast } = useToast()
+
         axios.interceptors.response.use(
             (response) => {
                return response
@@ -22,10 +24,7 @@ export function useAxiosInterceptors() {
                  * 401 - Not logged in | Unauthorized
                  */
                 if (error.response?.status == 401) {
-                    showErrorToast(
-                        'Session expired',
-                        'It looks like you do not have a valid access token.'
-                    )
+                    showErrorToast('It looks like you do not have a valid access token.')
 
                     return Promise.reject(error)
                 }
@@ -34,10 +33,7 @@ export function useAxiosInterceptors() {
                  * 403 - Access denied | Forbidden
                  */
                 if (error.response?.status == 403) {
-                    showErrorToast(
-                        'Access denied',
-                        'You do not have sufficient permissions to perform this operation'
-                    )
+                    showErrorToast('You do not have sufficient permissions to perform this operation')
 
                     return Promise.reject(error)
                 }
@@ -50,25 +46,12 @@ export function useAxiosInterceptors() {
                         showErrorToast('Error', message.message)
                     })
                 } else {
-                    showErrorToast('Error', 'An unknown error has occurred')
+                    showErrorToast('An unknown error has occurred')
                 }
 
                 return Promise.reject(error)
             }
         )
-    }
-
-    const showErrorToast = (summary, detail) => {
-        // const toast = useToast()
-
-        console.log(summary, detail)
-
-        // toast.add({
-        //     severity: 'error',
-        //     summary: summary,
-        //     detail: detail,
-        //     life: 3000
-        // })
     }
 
     return { addAxiosInterceptors }

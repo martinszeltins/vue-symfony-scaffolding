@@ -1,6 +1,5 @@
 <template>
     <vue-progress-bar></vue-progress-bar>
-    <AppToast position="top-center" />
     <router-view></router-view>
 </template>
 

@@ -11,7 +11,7 @@ import '@/assets/css/app.css'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
 import '@/assets/css/vendor/prime-vue/theme.css'
-import ToastService from 'primevue/toastservice'
+import 'toastify-js/src/toastify.css'
 import { useGlobalComponents } from '@/services/useGlobalComponents'
 import { useCustomDirectives } from '@/services/useCustomDirectives'
 
@@ -30,7 +30,6 @@ app.use(routes)
    .use(createPinia())
    .use(VueProgressBar, progressBarConfig)
    .use(PrimeVue)
-   .use(ToastService)
    .provide(
        'progressBar',
        app.config.globalProperties.$Progress
