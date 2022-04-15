@@ -12,7 +12,7 @@
 
         <div>
             <div class="font-semibold text-black">
-                John Doe
+              {{ appStore.user.fullName }}
             </div>
 
             <div class="text-sm">
@@ -29,7 +29,11 @@
 </template>
 
 <script setup lang="ts">
+    import { useAppStore } from '@/stores/appStore'
+
     let menu = $ref(null)
+
+    const appStore = useAppStore()
 
     let items = $ref([
         {
