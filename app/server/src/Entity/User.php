@@ -10,9 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  * @ApiResource
+ * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -25,14 +25,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"api"})
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private string $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @Groups({"api"})
+     * @ORM\Column(type="string", length=255)
      */
     private string $fullName;
 
