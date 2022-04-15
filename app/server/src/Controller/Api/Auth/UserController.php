@@ -16,8 +16,6 @@ class UserController extends BaseController
      */
     public function show(): Response
     {
-        $this->flashError('This is a message for you!');
-
-        return $this->json($this->getUser(), 500, [], ['groups' => 'api']);
+        return $this->json($this->getUser(), 200, [], ['groups' => 'api']);
     }
 }
