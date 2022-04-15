@@ -3,7 +3,7 @@ import router from '@/routes.ts'
 
 export function useProgressBar() {
     const progressBarConfig = {
-        color: "#57b9dc",
+        color: "#c6b0ff",
         failedColor: "#874b4b",
         thickness: "8px",
         autoFinish: false,
