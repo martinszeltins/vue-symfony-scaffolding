@@ -41,7 +41,7 @@ export function useAxiosInterceptors() {
                  * 403 - Access denied | Forbidden
                  */
                 if (error.response?.status == 403) {
-                    showErrorToast('You do not have sufficient permissions to perform this operation')
+                    showErrorToast('You do not have sufficient permissions to perform this action.')
 
                     return Promise.reject(error)
                 }
@@ -51,10 +51,10 @@ export function useAxiosInterceptors() {
                  */
                 if (error.response?.data?._flashMessages?.[0]) {
                     error.response.data._flashMessages.forEach(message => {
-                        showErrorToast('Error', message.message)
+                        showErrorToast(message.message)
                     })
                 } else {
-                    showErrorToast('An unknown error has occurred')
+                    showErrorToast('An unknown error has occurred. Please try again.')
                 }
 
                 return Promise.reject(error)

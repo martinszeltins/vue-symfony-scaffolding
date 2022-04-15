@@ -34,8 +34,10 @@ export function useAuth() {
             setUserInLocalStorage(user)
             goToRouteBeforeLogin()
         } catch (error) {
-            isInvalidCredentials = true
-            showErrorToast('Incorrect username or password. Please try again!')
+            if (error.response.status === 401) {
+                isInvalidCredentials = true
+                showErrorToast('Incorrect username or password. Please try again!')
+            }
 
             isLoading = false
         }
