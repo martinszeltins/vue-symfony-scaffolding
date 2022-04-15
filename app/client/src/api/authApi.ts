@@ -24,6 +24,6 @@ export default class {
     }
 
     static async logout(): Promise<any> {
-        return await axios.post(`${serverUrl}/api/auth/logout`, {a:123})
+        return await axios.post(`${serverUrl}/api/auth/logout`)
     }
 }
