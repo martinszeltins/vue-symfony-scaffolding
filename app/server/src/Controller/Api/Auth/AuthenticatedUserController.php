@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/api/auth")
  */
-class UserController extends BaseController
+class AuthenticatedUserController extends BaseController
 {
     /**
-     * @Route("/user")
+     * @Route("/authenticated-user")
      */
     public function show(): Response
     {

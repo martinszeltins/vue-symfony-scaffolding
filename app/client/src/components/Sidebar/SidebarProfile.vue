@@ -29,10 +29,12 @@
 </template>
 
 <script setup lang="ts">
+    import { useAuth } from '@/services/useAuth'
     import { useAppStore } from '@/stores/appStore'
 
     let menu = $ref(null)
 
+    const { logout } = useAuth()
     const appStore = useAppStore()
 
     let items = $ref([
@@ -46,7 +48,7 @@
         {
             label: 'Log out',
             command: () => {
-                alert('Log out!')
+                logout()
             }
         },
     ])

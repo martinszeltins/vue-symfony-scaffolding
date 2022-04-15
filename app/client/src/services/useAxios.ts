@@ -7,7 +7,7 @@ export function useAxios() {
     const configureAxios = () => {
         axios.defaults.headers.common = {
             'Content-Type':     'application/json',
-            'accept':           'application/json',
+            'Accept':           'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         }
 

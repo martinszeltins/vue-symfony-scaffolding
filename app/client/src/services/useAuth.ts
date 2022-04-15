@@ -15,7 +15,7 @@ export function useAuth() {
         if (user) {
             user = JSON.parse(user)
             appStore.user = user
-            axios.defaults.headers.common = { 'Authorization': `Bearer ${user.token}` }
+            setToken(user.token)
         }
     }
 
@@ -31,6 +31,7 @@ export function useAuth() {
             isLoading = false
 
             setUserInStore(user)
+            setToken(user.token)
             setUserInLocalStorage(user)
             goToRouteBeforeLogin()
         } catch (error) {
@@ -41,6 +42,14 @@ export function useAuth() {
 
             isLoading = false
         }
+    }
+
+    const logout = async () => {
+        await authApi.logout()
+
+        localStorage.removeItem('voting-platform_user')
+
+        routes.push({ name: 'auth-login' })
     }
 
     const setUserInStore = user => {
@@ -62,9 +71,17 @@ export function useAuth() {
         routes.push({ path: route })
     }
 
+    const setToken = token => {
+        axios.defaults.headers.common = {
+            ...axios.defaults.headers.common,
+            'Authorization': `Bearer ${token}`
+        }
+    }
+
     return $$({
         restoreSession,
         login,
+        logout,
         isUserLoggedIn,
         isLoading,
         isInvalidCredentials
