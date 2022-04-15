@@ -5668,3 +5668,31 @@
     display: block;
     width: 100%;
 }
+
+/* Toasts */
+.p-toast .p-toast-message.p-toast-message-success,
+.p-toast .p-toast-message.p-toast-message-error,
+.p-toast .p-toast-message.p-toast-message-warn,
+.p-toast .p-toast-message.p-toast-message-info {
+    background: #ffffff;
+    border: 0;
+    border-width: 0;
+    color: #343434;
+}
+
+.p-toast .p-toast-message .p-toast-message-content {
+    border-width: 0;
+}
+
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-icon {
+    font-size: 1.1rem;
+    background: #0000000a;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.p-toast .p-toast-message {
+    margin: 0 0 1rem 0;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    border-radius: 10px;
+}

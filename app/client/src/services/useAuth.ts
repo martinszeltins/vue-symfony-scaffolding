@@ -1,9 +1,10 @@
-import routes from '@/routes.ts'
-import authApi from '@/api/authApi.ts'
+import routes from '@/routes'
+import authApi from '@/api/authApi'
 import { useAppStore } from '@/stores/appStore'
 
 export function useAuth() {
     const appStore = useAppStore()
+
     let isLoading = $ref(false)
 
     const restoreSession = () => {
@@ -16,14 +17,14 @@ export function useAuth() {
         }
     }
 
-    const login = async (username, password) => {
+    const login = async (username, password) => {        
         isLoading = true
 
         try {
             const user = await authApi.login(username, password)
 
             isLoading = false
-            
+
             setUserInStore(user)
             setUserInLocalStorage(user)
             goToRouteBeforeLogin()

@@ -23,6 +23,7 @@
                             </div>
 
                             <AppInput
+                                @keydown.enter="login(username, password)"
                                 v-focus
                                 type="text"
                                 v-model="username"
@@ -35,6 +36,7 @@
                             </div>
 
                             <AppPassword
+                                @keydown.enter="login(username, password)"
                                 class="p-password-block"
                                 v-model="password"
                                 :feedback="false"
