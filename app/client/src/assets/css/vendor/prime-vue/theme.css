@@ -4505,7 +4505,7 @@
 }
 
 .p-menu {
-  padding: 0.25rem 0;
+  padding: 10px;
   background: #ffffff;
   color: #495057;
   border: 1px solid #dee2e6;
@@ -4518,6 +4518,7 @@
   border-radius: 0;
   transition: box-shadow 0.2s;
   user-select: none;
+  border-radius: 6px;
 }
 .p-menu .p-menuitem-link .p-menuitem-text {
   color: #495057;
