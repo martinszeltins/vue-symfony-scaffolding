@@ -31,6 +31,7 @@ export function useAxiosInterceptors() {
                      */
                     if (! error.response?.config?.url?.includes('/login_check')) {
                         showErrorToast('Session has expired. Please log in.')
+                        localStorage.removeItem('voting-platform_user')
                         routes.push({ name: 'auth-login' })
                     }
 
