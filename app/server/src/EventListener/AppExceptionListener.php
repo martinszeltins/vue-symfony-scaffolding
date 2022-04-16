@@ -38,6 +38,11 @@ class AppExceptionListener implements EventSubscriberInterface
             return;
         }
 
+        if ($this->hasFormViolations($exception)) {
+            $this->setFormViolations($event, $exception);
+            return;
+        }
+
         $this->logger->critical($exception->getMessage(), [
             'exception' => $exception,
         ]);
@@ -45,5 +50,22 @@ class AppExceptionListener implements EventSubscriberInterface
         $data = ['exception' => $exception->getMessage()];
 
         $event->setResponse(new JsonResponse($data, $exception->getCode()));
+    }
+
+    private function hasFormViolations(AppException $exception)
+    {
+        $exceptionMessage = json_decode($exception->getMessage(), true);
+
+        return isset($exceptionMessage['violations']);
+    }
+
+    private function setFormViolations(ExceptionEvent $event, AppException $exception)
+    {
+        $exceptionMessage = json_decode($exception->getMessage(), true);
+        $violations = $exceptionMessage['violations'];
+
+        $event->setResponse(new JsonResponse([
+            'violations' => $violations,
+        ], $exception->getCode()));
     }
 }
