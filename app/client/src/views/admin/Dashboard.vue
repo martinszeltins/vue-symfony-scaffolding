@@ -4,31 +4,81 @@
     </h2>
 
     <div class="p-6 bg-white rounded-lg shadow-md space-y-4 mb-8">
-        <div class="flex flex-col gap-4">
-            <div class="text-gray-700 text-base font-semibold">
-                Username
+        <div>
+            <div class="flex flex-col gap-4">
+                <div class="text-gray-700 text-base font-semibold">
+                    Username
+                </div>
+
+                <AppInput
+                    :class="{ 'p-invalid': v$.username.$error }"
+                    v-model="registrationForm.username"
+                    type="text"
+                />
             </div>
 
-            <AppInput v-model="registrationForm.username" type="text" />
+            <div class="mt-2">
+                <div
+                    class="text-red-500 text-sm"
+                    v-for="error of v$.username.$errors"
+                    :key="error.$uid">
+
+                    {{ error.$message }}
+                </div>
+            </div>
         </div>
 
-        <div class="flex flex-col gap-4">
-            <div class="text-gray-700 text-base font-semibold">
-                Email
+        <div>
+            <div class="flex flex-col gap-4">
+                <div class="text-gray-700 text-base font-semibold">
+                  Email
+                </div>
+
+                <AppInput
+                    :class="{ 'p-invalid': v$.email.$error }"
+                    v-model="registrationForm.email"
+                    type="text"
+                />
             </div>
 
-            <AppInput v-model="registrationForm.email" type="text" />
+            <div class="mt-2">
+                <div
+                    class="text-red-500 text-sm"
+                    v-for="error of v$.email.$errors"
+                    :key="error.$uid">
+
+                    {{ error.$message }}
+                </div>
+            </div>
         </div>
 
-        <div class="flex flex-col gap-4">
-            <div class="text-gray-700 text-base font-semibold">
-                Password
+        <div>
+            <div class="flex flex-col gap-4">
+                <div class="text-gray-700 text-base font-semibold">
+                    Password
+                </div>
+
+                <AppPassword
+                    :class="{ 'p-invalid': v$.password.$error }"
+                    v-model="registrationForm.password"
+                />
             </div>
 
-            <AppPassword v-model="registrationForm.password" />
+            <div class="mt-2">
+                <div
+                    class="text-red-500 text-sm"
+                    v-for="error of v$.password.$errors"
+                    :key="error.$uid">
+
+                    {{ error.$message }}
+                </div>
+            </div>
         </div>
 
-        <AppButton @click="submitRegistrationForm" label="Submit" />
+        <AppButton
+            @click="submitRegistrationForm"
+            label="Submit"
+        />
     </div>
 
     <div class="p-6 bg-white rounded-lg shadow-md space-y-4">
@@ -61,19 +111,20 @@
         password: { required },
     }
 
-    const v$ = useVuelidate(rules, registrationForm, { $externalResults })
+    const v$ = useVuelidate(rules, registrationForm, { $externalResults: $$($externalResults) })
 
     const submitRegistrationForm = async () => {
         await v$.value.$validate()
 
-        console.log(v$)
-
-        const { data } = await axios.post('http://localhost:13100/api/test', {
-            // username: 'aa',
-            // email: 'aa',
-            password: 'aa',
-        })
-
-        console.log(data)
+        // Let's make a fake request with missing data to test validation
+        try {
+            await axios.post('http://localhost:13100/api/test', {
+                password: 'aa',
+            })
+        } catch (error) {
+            if (error.response?.data?.violations) {
+                $externalResults = error.response.data.violations
+            }
+        }
     }
 </script>

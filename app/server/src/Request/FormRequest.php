@@ -15,7 +15,7 @@ class FormRequest
         $violations        = $validator->validate($request, $constraint);
 
         foreach ($violations as $violation) {
-            $requestViolations[trim($violation->getParameters()['{{ field }}'], '"')] = $violation->getMessage();
+            $requestViolations[trim($violation->getParameters()['{{ field }}'], '"')] = [$violation->getMessage()];
         }
 
         if (count($violations) > 0) {
