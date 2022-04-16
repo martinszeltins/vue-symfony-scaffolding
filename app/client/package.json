@@ -1,8 +1,8 @@
 {
-    "name": "voting-platform",
+    "name": "vue-symfony-scaffolding",
     "version": "1.0.0",
     "license": "MIT",
-    "description": "Voting Platform",
+    "description": "Vue Symfony Scaffolding",
     "private": true,
     "scripts": {
         "dev": "vite",

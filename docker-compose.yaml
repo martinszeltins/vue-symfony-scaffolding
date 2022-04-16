@@ -3,8 +3,8 @@ version: '3.7'
 services:
 
   # Node for client app
-  voting-platform-client-node:
-    container_name: voting-platform-client-node
+  vue-symfony-scaffolding-client-node:
+    container_name: vue-symfony-scaffolding-client-node
     build: docker/containers/client-node
     restart: unless-stopped
     stdin_open: true                # Needed for HMR
@@ -19,8 +19,8 @@ services:
 
 
   # Nginx for server app
-  voting-platform-server-nginx:
-    container_name: voting-platform-server-nginx
+  vue-symfony-scaffolding-server-nginx:
+    container_name: vue-symfony-scaffolding-server-nginx
     build: docker/containers/server-nginx
     restart: unless-stopped
     ports:
@@ -29,16 +29,16 @@ services:
       - ./app/server:/var/www
       - ./docker/containers/server-nginx/etc/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
-      - voting-platform-server-php
-      - voting-platform-server-mysql
+      - vue-symfony-scaffolding-server-php
+      - vue-symfony-scaffolding-server-mysql
     networks:
       - app-network
 
 
   # PHP for server app
-  voting-platform-server-php:
+  vue-symfony-scaffolding-server-php:
     build: docker/containers/server-php
-    container_name: voting-platform-server-php
+    container_name: vue-symfony-scaffolding-server-php
     restart: unless-stopped
     tty: true
     environment:
@@ -50,13 +50,13 @@ services:
     networks:
       - app-network
     depends_on:
-      - voting-platform-server-mysql
+      - vue-symfony-scaffolding-server-mysql
 
 
   # MySQL for server app
-  voting-platform-server-mysql:
+  vue-symfony-scaffolding-server-mysql:
     image: mysql:8.0
-    container_name: voting-platform-server-mysql
+    container_name: vue-symfony-scaffolding-server-mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     tty: true
@@ -66,7 +66,7 @@ services:
       - dbdata:/var/lib/mysql/
     environment:
       MYSQL_ROOT_PASSWORD: wGEDBcJzfSer2mLgh5Na5QKaT
-      MYSQL_DATABASE: voting_platform
+      MYSQL_DATABASE: vue_symfony_scaffolding
     networks:
       - app-network
 
