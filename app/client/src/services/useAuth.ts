@@ -2,6 +2,7 @@ import routes from '@/routes'
 import authApi from '@/api/authApi'
 import { useToast } from '@/services/useToast'
 import { useAppStore } from '@/stores/appStore'
+import { LOCALSTORAGE_USER, LOCALSTORAGE_PATH_BEFORE_LOGIN } from '@/config'
 
 export function useAuth() {
     const appStore = useAppStore()
@@ -10,7 +11,7 @@ export function useAuth() {
     let isInvalidCredentials = $ref(false)
 
     const restoreSession = () => {
-        let user = localStorage['voting-platform_user']
+        let user = localStorage[LOCALSTORAGE_USER]
 
         if (user) {
             user = JSON.parse(user)
@@ -47,7 +48,7 @@ export function useAuth() {
     const logout = async () => {
         await authApi.logout()
 
-        localStorage.removeItem('voting-platform_user')
+        localStorage.removeItem(LOCALSTORAGE_USER)
 
         routes.push({ name: 'auth-login' })
     }
@@ -57,7 +58,7 @@ export function useAuth() {
     }
 
     const setUserInLocalStorage = user => {
-        localStorage['voting-platform_user'] = JSON.stringify(user)
+        localStorage[LOCALSTORAGE_USER] = JSON.stringify(user)
     }
 
     const isUserLoggedIn = () => {
@@ -65,7 +66,7 @@ export function useAuth() {
     }
 
     const goToRouteBeforeLogin = () => {
-        let route = localStorage['voting-platform_path_before_login']
+        let route = localStorage[LOCALSTORAGE_PATH_BEFORE_LOGIN]
         route = (!route || route == '/auth/login') ? '/' : route
         
         routes.push({ path: route })

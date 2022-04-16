@@ -1,5 +1,6 @@
 import axios from 'axios'
 import routes from '@/routes'
+import { LOCALSTORAGE_USER } from '@/config'
 import { useToast } from '@/services/useToast'
 
 export function useAxiosInterceptors() {
@@ -31,7 +32,7 @@ export function useAxiosInterceptors() {
                      */
                     if (! error.response?.config?.url?.includes('/login_check')) {
                         showErrorToast('Session has expired. Please log in.')
-                        localStorage.removeItem('voting-platform_user')
+                        localStorage.removeItem(LOCALSTORAGE_USER)
                         routes.push({ name: 'auth-login' })
                     }
 
