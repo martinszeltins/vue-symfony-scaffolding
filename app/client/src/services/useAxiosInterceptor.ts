@@ -48,6 +48,15 @@ export function useAxiosInterceptors() {
                 }
 
                 /**
+                 * 422 - Unprocessable Entity | Form Validation Errors
+                 *
+                 * Do not show an unknown error for form violation errors
+                 */
+                if (error.response?.status == 422 && error.response?.data?.violations) {
+                    return Promise.reject(error)
+                }
+
+                /**
                  * Unknown error
                  */
                 if (error.response?.data?._flashMessages?.[0]) {
