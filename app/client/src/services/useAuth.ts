@@ -1,7 +1,7 @@
 import routes from '@/routes'
 import authApi from '@/api/authApi'
-import { useAppStore } from '@/stores/appStore'
 import { useToast } from '@/services/useToast'
+import { useAppStore } from '@/stores/appStore'
 
 export function useAuth() {
     const appStore = useAppStore()

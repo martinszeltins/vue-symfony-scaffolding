@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-    import routes from '@/routes.ts'
+    import routes from '@/routes'
     import { useAuth } from '@/services/useAuth'
 
     const { isUserLoggedIn  } = useAuth()
