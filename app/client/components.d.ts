@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    FormFieldError: typeof import('./src/components/Form/FormFieldError.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SidebarAdmin: typeof import('./src/components/Sidebar/SidebarAdmin.vue')['default']

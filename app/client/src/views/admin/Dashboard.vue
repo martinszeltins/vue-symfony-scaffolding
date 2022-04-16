@@ -18,13 +18,7 @@
             </div>
 
             <div class="mt-2">
-                <div
-                    class="text-red-500 text-sm"
-                    v-for="error of v$.username.$errors"
-                    :key="error.$uid">
-
-                    {{ error.$message }}
-                </div>
+                <FormFieldError :errors="v$.username.$errors" />
             </div>
         </div>
 
@@ -42,13 +36,7 @@
             </div>
 
             <div class="mt-2">
-                <div
-                    class="text-red-500 text-sm"
-                    v-for="error of v$.email.$errors"
-                    :key="error.$uid">
-
-                    {{ error.$message }}
-                </div>
+                <FormFieldError :errors="v$.email.$errors" />
             </div>
         </div>
 
@@ -65,13 +53,7 @@
             </div>
 
             <div class="mt-2">
-                <div
-                    class="text-red-500 text-sm"
-                    v-for="error of v$.password.$errors"
-                    :key="error.$uid">
-
-                    {{ error.$message }}
-                </div>
+                <FormFieldError :errors="v$.password.$errors" />
             </div>
         </div>
 
