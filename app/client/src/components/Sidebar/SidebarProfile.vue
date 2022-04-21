@@ -23,35 +23,18 @@
 
     <AppMenu
         ref="menu"
-        :model="items"
+        :model="sidebarProfileMenuItems"
         :popup="true"
     />
 </template>
 
 <script setup lang="ts">
-    import { useAuth } from '@/services/useAuth'
     import { useAppStore } from '@/stores/appStore'
+    import { sidebarProfileMenuItems } from '@/menu/sidebarProfileMenu'
 
     let menu = $ref(null)
 
-    const { logout } = useAuth()
     const appStore = useAppStore()
-
-    let items = $ref([
-        {
-            label: 'Settings',
-            command: () => {
-                alert('Open Settings!')
-            }
-        },
-
-        {
-            label: 'Log out',
-            command: () => {
-                logout()
-            }
-        },
-    ])
 
     const openMenu = event => {
         menu.toggle(event)

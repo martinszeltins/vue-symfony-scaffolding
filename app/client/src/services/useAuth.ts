@@ -1,4 +1,4 @@
-import routes from '@/routes'
+import router from '@/routes'
 import authApi from '@/api/authApi'
 import { useToast } from '@/services/useToast'
 import { useAppStore } from '@/stores/appStore'
@@ -45,12 +45,12 @@ export function useAuth() {
         }
     }
 
-    const logout = async () => {
-        await authApi.logout()
+    const logout = () => {
+        authApi.logout()
 
         localStorage.removeItem(LOCALSTORAGE_USER)
 
-        routes.push({ name: 'auth-login' })
+        router.push({ name: 'auth-login' })
     }
 
     const setUserInStore = user => {
@@ -69,7 +69,7 @@ export function useAuth() {
         let route = localStorage[LOCALSTORAGE_PATH_BEFORE_LOGIN]
         route = (!route || route == '/auth/login') ? '/' : route
         
-        routes.push({ path: route })
+        router.push({ path: route })
     }
 
     const setToken = token => {

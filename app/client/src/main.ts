@@ -1,7 +1,7 @@
 import './utils/helpers'
 import App from './App.vue'
 import { createApp } from 'vue'
-import routes from '@/routes'
+import router from '@/routes'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 import { useAxios } from '@/services/useAxios'
@@ -26,7 +26,7 @@ configureAxios()
 registerGlobalComponents(app)
 registerCustomDirectives(app)
 
-app.use(routes)
+app.use(router)
    .use(createPinia())
    .use(VueProgressBar, progressBarConfig)
    .use(PrimeVue)

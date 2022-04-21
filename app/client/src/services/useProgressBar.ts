@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import router from '@/routes.ts'
+import router from '@/routes'
 
 export function useProgressBar() {
     const progressBarConfig = {

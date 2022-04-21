@@ -4,6 +4,7 @@
 </template>
 
 <script setup>
+    import { onMounted } from 'vue'
     import { useAuth } from '@/services/useAuth'
     import { useProgressBar } from '@/services/useProgressBar'
 
@@ -12,4 +13,8 @@
 
     restoreSession()
     initProgressBar()
+
+    onMounted(() => {
+        window['appMounted'] = true
+    })
 </script>

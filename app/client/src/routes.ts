@@ -62,7 +62,6 @@ const router = createRouter({
 /**
  * Route Middleware
  */
-
 function nextFactory(context, middleware, index)
 {
     const subsequentMiddleware = middleware[index]
@@ -77,6 +76,7 @@ function nextFactory(context, middleware, index)
 }
 
 router.beforeEach((to, from, next) => {
+    window['routerReady'] = false
 
     // Middleware
     if (to.meta.middleware)
@@ -92,6 +92,10 @@ router.beforeEach((to, from, next) => {
     }
 
     return next();
+})
+
+router.afterEach(() => {
+    window['routerReady'] = true
 })
 
 export default router

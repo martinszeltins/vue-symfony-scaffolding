@@ -3,12 +3,12 @@
 </template>
 
 <script setup lang="ts">
-    import routes from '@/routes'
+    import router from '@/routes'
     import { useAuth } from '@/services/useAuth'
 
     const { isUserLoggedIn  } = useAuth()
 
     if (isUserLoggedIn()) {
-        routes.push({ name: 'admin-dashboard' })
+        router.push({ name: 'admin-dashboard' })
     }
 </script>

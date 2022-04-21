@@ -68,5 +68,10 @@
     let username = $ref('')
     let password = $ref('')
 
+    if (location.hostname === 'localhost') {
+        username = 'admin'
+        password = 'admin'
+    }
+
     const { login, isLoading, isInvalidCredentials } = useAuth()
 </script>

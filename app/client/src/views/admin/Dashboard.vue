@@ -77,7 +77,7 @@
 <script setup>
     import { reactive } from 'vue'
     import useVuelidate from '@vuelidate/core'
-    import { required, email } from '@vuelidate/validators'
+    import registrationFormRules from '@/forms/validation/registrationForm'
 
     const registrationForm = reactive({
         email: '',
@@ -86,14 +86,7 @@
     })
 
     let $externalResults = $ref({})
-
-    const rules = {
-        email:    { required, email },
-        username: { required },
-        password: { required },
-    }
-
-    const v$ = useVuelidate(rules, registrationForm, { $externalResults: $$($externalResults) })
+    const v$ = useVuelidate(registrationFormRules, registrationForm, { $externalResults: $$($externalResults) })
 
     const submitRegistrationForm = async () => {
         await v$.value.$validate()
