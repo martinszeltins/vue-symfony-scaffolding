@@ -5,12 +5,18 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    DummyForm: typeof import('./src/components/Form/DummyForm.vue')['default']
     FormFieldError: typeof import('./src/components/Form/FormFieldError.vue')['default']
+    RegistrationForm: typeof import('./src/components/Form/RegistrationForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SidebarAdmin: typeof import('./src/components/Sidebar/SidebarAdmin.vue')['default']
-    SidebarItem: typeof import('./src/components/Sidebar/SidebarItem.vue')['default']
-    SidebarProfile: typeof import('./src/components/Sidebar/SidebarProfile.vue')['default']
+    SidebarAdmin: typeof import('./src/components/Sidebar/Admin/SidebarAdmin.vue')['default']
+    SidebarAdminItem: typeof import('./src/components/Sidebar/Admin/SidebarAdminItem.vue')['default']
+    SidebarAdminItems: typeof import('./src/components/Sidebar/Admin/SidebarAdminItems.vue')['default']
+    SidebarAdminProfile: typeof import('./src/components/Sidebar/Admin/SidebarAdminProfile.vue')['default']
+    SidebarItem: typeof import('./src/components/Sidebar/Admin/SidebarItem.vue')['default']
+    SidebarItems: typeof import('./src/components/Sidebar/Admin/SidebarItems.vue')['default']
+    SidebarProfile: typeof import('./src/components/Sidebar/Admin/SidebarProfile.vue')['default']
   }
 }
 

@@ -14,17 +14,20 @@ import '@/assets/css/vendor/prime-vue/theme.css'
 import 'toastify-js/src/toastify.css'
 import { useGlobalComponents } from '@/services/useGlobalComponents'
 import { useCustomDirectives } from '@/services/useCustomDirectives'
+import { useCSSContainerQueriesPolyfill } from '@/services/useCSSContainerQueriesPolyfill'
 
 const { configureAxios } = useAxios()
 const { progressBarConfig } = useProgressBar()
 const { registerGlobalComponents } = useGlobalComponents()
 const { registerCustomDirectives } = useCustomDirectives()
+const { initCSSContainerQueriesPolyfill } = useCSSContainerQueriesPolyfill()
 
 const app = createApp(App)
 
 configureAxios()
 registerGlobalComponents(app)
 registerCustomDirectives(app)
+initCSSContainerQueriesPolyfill()
 
 app.use(router)
    .use(createPinia())

@@ -1,0 +1,17 @@
+.scrollbar-overlay-thin::-webkit-scrollbar {
+    visibility: visible;
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+}
+
+.scrollbar-overlay-thin::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    border-radius: 3px;
+    background-color: #e4e4e4;
+}
+
+.scrollbar-overlay-thin:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}

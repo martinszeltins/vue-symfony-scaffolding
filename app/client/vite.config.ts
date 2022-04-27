@@ -2,12 +2,14 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'url'
 import Components from 'unplugin-vue-components/vite'
+import cssContainerQueriesPolyfillVitePlugin from './vite/plugins/cssContainerQueriesPolyfillVitePlugin'
 
 export default defineConfig(({ command }) => {
     return {
         plugins: [
             vue({ reactivityTransform: true }),
             Components({}),
+            cssContainerQueriesPolyfillVitePlugin(),
         ],
     
         base: (command === 'build') ? './' : '/',
@@ -25,6 +27,10 @@ export default defineConfig(({ command }) => {
             hmr: {
                 clientPort: 14365
             }
+        },
+
+        css: {
+            devSourcemap: true
         }
     }
 })

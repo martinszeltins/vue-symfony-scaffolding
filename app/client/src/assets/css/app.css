@@ -3,6 +3,10 @@
 
 /* Utilities */
 @import './utilities/tailwind.css';
+@import './utilities/scrollbar.css';
 
 /* Components */
 @import './components/toastify.css';
+
+/* Components */
+@import './themes/dark.css';

@@ -1,0 +1,110 @@
+@important {
+    .dark {
+        /**
+         * Text Input
+         */
+        .p-inputtext {
+            @apply bg-gray-750 border-gray-600 text-gray-300;
+
+            &:hover {
+                @apply border-gray-500;
+            }
+
+            &:focus {
+                @apply shadow-input-gray-700;
+            }
+
+            &.p-invalid {
+                @apply border-red-800;
+            }
+        }
+
+        .p-invalid {
+            input {
+                @apply border-red-800;
+            }
+        }
+
+        /**
+         * Buttons
+         */
+        .p-button {
+            @apply text-gray-200 bg-purple-750 border-purple-750;
+
+            &:hover {
+                @apply bg-purple-700 border-purple-700;
+            }
+
+            &:focus {
+                @apply shadow-none ring-1 ring-purple-600 ring-offset-transparent;
+            }
+        }
+
+        /**
+         * Menu
+         */
+         .p-menu {
+            &.p-menu-overlay {
+                @apply bg-gray-700/90 shadow-none border border-gray-500 border-solid backdrop-blur-sm;
+
+                .p-menuitem-icon,
+                .p-menuitem-text {
+                    @apply text-gray-200
+                }
+
+                .p-menuitem-link:not(.p-disabled) {
+                    &:hover {
+                        @apply bg-gray-600;
+                    }
+                }
+            }
+        }
+
+        /**
+         * Toast Notifications
+         */
+        .toastify {
+            @apply bg-gray-700 text-gray-200;
+
+            .toast-close {
+                @apply text-gray-200 bg-[#00000021];
+                filter: invert(1) brightness(1.3);
+            }
+        }
+
+        /**
+         * Scrollbars
+         */
+        .scrollbar-dark-only::-webkit-scrollbar {
+            visibility: visible;
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+        }
+        
+        .scrollbar-dark-only::-webkit-scrollbar-thumb {
+            visibility: visible;
+            border-radius: 3px;
+            background-color: #445165;
+        }
+
+        .scrollbar-overlay-thin::-webkit-scrollbar {
+            visibility: visible;
+            -webkit-appearance: none;
+            width: 6px;
+            height: 6px;
+            background-color: transparent;
+        }
+        
+        .scrollbar-overlay-thin::-webkit-scrollbar-thumb {
+            visibility: hidden;
+            border-radius: 3px;
+            background-color: #445165;
+        }
+        
+        .scrollbar-overlay-thin:hover::-webkit-scrollbar-thumb {
+            visibility: visible;
+        }
+    }
+}
